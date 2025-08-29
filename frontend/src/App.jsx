@@ -37,7 +37,7 @@ function App() {
     try {
       setError(null);
       const res = await axios.post("http://localhost:5000/todos", {
-        description,
+        description: description.trim(),
         completed: false,
       });
       setTodos([...todos, res.data]);
@@ -61,14 +61,14 @@ function App() {
         return;
       }
       await axios.put(`http://localhost:5000/todos/${id}`, {
-        description: editedText,
+        description: trimmedText,
       });
       setEditingTodo(null);
       setEditedText("");
       setTodos(
         todos.map((todo) =>
           todo.todo_id === id
-            ? { ...todo, description: editedText, completed: false }
+            ? { ...todo, description: trimmedText, completed: false }
             : todo
         )
       );
