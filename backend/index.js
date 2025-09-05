@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors({
   origin: "https://frontend-6j0r.onrender.com"
-            ));
+}));
 app.use(express.json());
 
 app.use("/todos", todoRoutes);
